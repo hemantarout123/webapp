@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("Checkout") {
             steps {
-                'https://github.com/hemantarout123/webapp.git'
+                git branch: 'master', url: 'https://github.com/hemantarout123/webapp.git'
             }
         }
 
@@ -37,8 +37,8 @@ pipeline {
                 sshagent(['demo-create']) {
                     sh """
                         scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@13.201.98.229:/home/ec2-user/tomcat/webapps/
-                        ssh -o StrictHostKeyChecking=no ec2-user@13.201.98.229 "bash /home/ec2-user/tomcat/bin/shutdown.sh"
-                        ssh -o StrictHostKeyChecking=no ec2-user@13.201.98.229 "bash /home/ec2-user/tomcat/bin/startup.sh"
+                        ssh -o StrictHostKeyChecking=no ec2-user@13.201.98.229 "bash /home/ec2-user/tomcat/bin/catalina.sh stop"
+                        ssh -o StrictHostKeyChecking=no ec2-user@13.201.98.229 "bash /home/ec2-user/tomcat/bin/catalina.sh start"
                     """
                 }
             }
