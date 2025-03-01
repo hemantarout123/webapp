@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("Checkout") {
             steps {
-                ''https://github.com/hemantarout123/webapp.git''
+                'https://github.com/hemantarout123/webapp.git'
             }
         }
 
