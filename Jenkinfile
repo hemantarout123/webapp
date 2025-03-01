@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("Checkout") {
             steps {
-                git 'https://github.com/Chinku-code/webapp.git'
+                https://github.com/hemantarout123/webapp.git
             }
         }
 
@@ -36,9 +36,9 @@ pipeline {
             steps {
                 sshagent(['demo-create']) {
                     sh """
-                        scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@15.206.178.27:/home/ec2-user/tomcat-10/webapps/
-                        ssh -o StrictHostKeyChecking=no ec2-user@15.206.178.27 "bash /home/ec2-user/tomcat-10/bin/shutdown.sh"
-                        ssh -o StrictHostKeyChecking=no ec2-user@15.206.178.27 "bash /home/ec2-user/tomcat-10/bin/startup.sh"
+                        scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@13.201.98.229:/home/ec2-user/tomcat/webapps/
+                        ssh -o StrictHostKeyChecking=no ec2-user@13.201.98.229 "bash /home/ec2-user/tomcat/bin/shutdown.sh"
+                        ssh -o StrictHostKeyChecking=no ec2-user@13.201.98.229 "bash /home/ec2-user/tomcat/bin/startup.sh"
                     """
                 }
             }
